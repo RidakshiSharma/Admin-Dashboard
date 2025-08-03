@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard</title>
+  <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #000000;
+      --header-footer-bg: #4CAF50;
+      --sidebar-bg: #f0f0f0;
+      --link-color: purple; 
+    }
+
+    body.dark {
+      --bg-color: #121212;
+      --text-color: #ffffff;
+      --header-footer-bg: #1f1f1f;
+      --sidebar-bg: #2c2c2c;
+      --link-color: #dda0dd; 
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      display: grid;
+      grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+      grid-template-rows: auto 1fr auto;
+      grid-template-columns: 180px 1fr;
+      height: 100vh;
+      transition: background-color 0.3s, color 0.3s;
+      border: 2px solid black;
+    }
+
+    header {
+      grid-area: header;
+      background-color: var(--header-footer-bg);
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: bold;
+    }
+
+    .theme-toggle {
+      color: white;
+      font-size: 14px;
+    }
+
+    aside {
+      grid-area: sidebar;
+      background-color: var(--sidebar-bg);
+      padding: 20px 10px;
+    }
+
+    aside ul {
+      list-style-type: disc;
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    aside li {
+      margin-bottom: 0;
+    }
+
+    aside a {
+      text-decoration: underline;
+      color: var(--link-color);
+      font-size: 14px;
+    }
+
+    main {
+      grid-area: main;
+      padding: 20px;
+    }
+
+    footer {
+      grid-area: footer;
+      background-color: var(--header-footer-bg);
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        grid-template-areas:
+          "header"
+          "main"
+          "sidebar"
+          "footer";
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr auto auto;
+      }
+
+      aside {
+        padding: 10px 15px;
+      }
+
+      aside ul {
+        padding-left: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>Admin Dashboard</div>
+    <label class="theme-toggle">
+      <input type="checkbox" id="themeSwitcher"> Dark Mode
+    </label>
+  </header>
+
+  <aside>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Users</a></li>
+      <li><a href="#">Settings</a></li>
+    </ul>
+  </aside>
+
+  <main>
+    <h3>Welcome, Admin!</h3>
+    <p>This is the main content area. Add charts, tables, or reports here.</p>
+  </main>
+
+  <footer>
+    © 2025 Admin Panel
+  </footer>
+
+  <script>
+    const themeSwitcher = document.getElementById('themeSwitcher');
+    themeSwitcher.addEventListener('change', function () {
+      document.body.classList.toggle('dark', this.checked);
+    });
+  </script>
+</body>
+</html>
